@@ -8,7 +8,7 @@
 
 ## D. APERSEPSI
 
-### Dugaanku
+### Dugaanku:
 
 ```javascript
 let namaSiswa = "Budi";
@@ -40,7 +40,7 @@ console.log(nilai);
 
 #### 2. Menurutmu, apa fungsi nama, umur, dan nilai?
 
-**Jawab:** Fungsi nama untuk menyimpan teks Budi, fungsi umur untuk menyimpan angka 16, fungsi nilai untuk menyimpan angka 85. Jadi ketiganya merupakan variabel untuk menyimpan data yang dipanggil.
+**Jawab:** Fungsi nama untuk menyimpan teks Budi, fungsi umur untuk menyimpan angka 16, fungsi nilai untuk menyimpan angka 85. Jadi ketiganya merupakan variable untuk menyimpan data yang dipanggil
 
 #### 3. Apa yang terjadi jika kode berikut dijalankan?
 
@@ -48,7 +48,7 @@ console.log(nilai);
 console.log(nama);
 ```
 
-**Jawaban:** Maka akan muncul teks Budi.
+**Jawaban:** maka akan muncul teks Budi
 
 ![Screenshot 2](images/image2.png)
 
@@ -78,15 +78,15 @@ Umur : 16
 
 #### 1. Apakah hasil pada Console berubah?
 
-**Jawab:** Ya berubah.
+**Jawab:** Ya berubah
 
 #### 2. Bagian kode mana yang kamu ubah?
 
-**Jawab:** Bagian variable isi `let nama`, `let kelas`, `let umur`.
+**Jawab:** Bagian variable isi `let nama`, `let kelas`, `let umur`
 
 #### 3. Mengapa program dapat menampilkan data yang baru?
 
-**Jawab:** Karena `console.log` bertugas menampilkan isi variable, jadi saat isi variable diubah maka akan muncul data yang baru.
+**Jawab:** Karena `console.log` bertugas menampilkan isi variable, jadi saat isi variable diubah maka akan muncul data yang baru
 
 ## I. AKTIVITAS 5 – VARIABLE UNTUK MENYIMPAN BERBAGAI DATA
 
@@ -103,24 +103,24 @@ let aktif = true;
 
 ### Identifikasi data tersebut
 
-| Variable | Nilai | Jenis Data |
-|---|---|---|
-| `nama` | `"Andi"` | String (teks) |
-| `umur` | `17` | Number (angka) |
-| `tinggi` | `170` | Number (angka) |
-| `aktif` | `true` | Boolean (benar/salah) |
+| Variable | Nilai  | Jenis Data            |
+| -------- | ------ | --------------------- |
+| `nama`   | “Andi” | String (teks)         |
+| `umur`   | `17`   | Number (angka)        |
+| `tinggi` | `170`  | Number (angka)        |
+| `aktif`  | `true` | Boolean (benar/salah) |
 
 ### Kesimpulan
 
 Data yang ditulis menggunakan tanda kutip seperti:
 
 ```text
-"Andi"
+“Andi”
 ```
 
 merupakan data:
 
-**Jawab:** String (teks).
+**Jawab:** String (teks)
 
 Sedangkan:
 
@@ -130,7 +130,7 @@ Sedangkan:
 
 merupakan data:
 
-**Jawab:** Number (angka).
+**Jawab:** Number (angka)
 
 ## J. AKTIVITAS 6 – MENGENAL `let` DAN `const`
 
@@ -158,33 +158,33 @@ console.log(nama);
 
 ### Apa yang terjadi?
 
-**Jawab:** Error.
+**Jawab:** error
 
 ![Screenshot 5](images/image5.png)
 
 ### Kesimpulan Sementara
 
-| Keyword | Nilai dapat diubah? | Kegunaan sederhana |
-|---|---|---|
-| `let` | Bisa diubah | Untuk menyimpan data yang nilainya bisa diubah |
-| `const` | Tidak bisa diubah | Untuk menyimpan data yang tetap |
+| Keyword | Nilai dapat diubah? | Kegunaan sederhana                             |
+| ------- | ------------------- | ---------------------------------------------- |
+| `let`   | Bisa diubah         | Untuk menyimpan data yang nilainya bisa diubah |
+| `const` | Tidak bisa diubah   | Untuk menyimpan data yang tetap                |
 
 ## L. AKTIVITAS 8 – MANA YANG BENAR?
 
 Berikan tanda ✓ pada nama variable yang benar dan tanda ✗ pada nama variable yang salah.
 
 | No. | Nama Variable | ✓/✗ |
-|---:|---|:---:|
-| 1 | `nama` | ✓ |
-| 2 | `namaSiswa` | ✓ |
-| 3 | `nama_siswa` | ✓ |
-| 4 | `2nama` | ✗ |
-| 5 | `nama siswa` | ✗ |
-| 6 | `nilaiAkhir` | ✓ |
-| 7 | `nilai1` | ✓ |
-| 8 | `nilai-akhir` | ✗ |
-| 9 | `Alamat` | ✓ |
-| 10 | `alamatSiswa` | ✓ |
+| --: | ------------- | :-: |
+|   1 | `nama`        |  ✓  |
+|   2 | `namaSiswa`   |  ✓  |
+|   3 | `nama_siswa`  |  ✓  |
+|   4 | `2nama`       |  ✗  |
+|   5 | `nama siswa`  |  ✗  |
+|   6 | `nilaiAkhir`  |  ✓  |
+|   7 | `nilai1`      |  ✓  |
+|   8 | `nilai-akhir` |  ✗  |
+|   9 | `Alamat`      |  ✓  |
+|  10 | `alamatSiswa` |  ✓  |
 
 ### Perbaiki nama variable yang salah
 
@@ -193,7 +193,7 @@ Berikan tanda ✓ pada nama variable yang benar dan tanda ✗ pada nama variable
 Menjadi:
 
 ```javascript
-nama2
+nama2;
 ```
 
 **`nama siswa`**
@@ -201,7 +201,7 @@ nama2
 Menjadi:
 
 ```javascript
-namaSiswa
+namaSiswa;
 ```
 
 **`nilai-akhir`**
@@ -209,7 +209,7 @@ namaSiswa
 Menjadi:
 
 ```javascript
-nilai_akhir
+nilai_akhir;
 ```
 
 ## M. AKTIVITAS 9 – TANTANGAN DATA DIRI
@@ -224,7 +224,7 @@ Data yang harus disimpan:
 4. Umur
 5. Hobi
 
-Gunakan minimal 5 variable.
+Gunakan minimal 5 variable
 
 ### Jawaban
 
@@ -242,7 +242,7 @@ console.log(umur);
 console.log(hobi);
 ```
 
-**Screenshot**
+**Screenshot:**
 
 ![Screenshot 6](images/image6.png)
 
@@ -257,7 +257,7 @@ Data:
 - Nilai Matematika
 - Nilai Produktif
 
-Kemudian tampilkan semua data menggunakan `console.log()`.
+Kemudian tampilkan semua data menggunakan `console.log();`
 
 ### Jawaban
 
@@ -273,25 +273,23 @@ console.log(matematika);
 console.log(produktif);
 ```
 
-**Screenshot**
+**Screenshot:**
 
 ![Screenshot 7](images/image7.png)
-
-![Screenshot 8](images/image8.png)
 
 ### Pertanyaan
 
 #### 1. Berapa variable yang kamu buat?
 
-**Jawab:** 4 variable.
+**Jawab:** 4 variable
 
 #### 2. Mana variable yang menyimpan teks?
 
-**Jawab:** Variable `nama`.
+**Jawab:** variable nama
 
 #### 3. Mana variable yang menyimpan angka?
 
-**Jawab:** Variable `bahasaIndonesia`, `matematika`, `produktif`.
+**Jawab:** variable bahasa Indonesia, matematika, produktif
 
 ## O. AKTIVITAS 11 – DEBUGGING
 
@@ -311,7 +309,7 @@ console.log(2kelas);
 
 Temukan kesalahan tersebut dan perbaiki programnya.
 
-### Program yang sudah diperbaiki
+### Program yang sudah diperbaiki:
 
 ```javascript
 let namaSiswa = "Budi";
@@ -325,9 +323,9 @@ console.log(kelas2);
 
 ### Apa saja kesalahan yang kamu temukan?
 
-1. `let nama siswa` salah karena seharusnya tidak dispasi.
-2. `let 2kelas` salah karena seharusnya angka tidak boleh di depan.
-3. `console.log(nama siswa)` dan `console.log(2kelas)` juga salah karena memanggil variable yang tidak valid.
+1. `let nama siswa` salah karena seharusnya tidak diberi spasi
+2. `let 2kelas` salah karena seharusnya angka tidak boleh di depan
+3. `console.log(nama siswa)` dan `console.log(2kelas)` juga salah karena memanggil variable yang tidak valid
 
 ## P. AKTIVITAS 12 – CHALLENGE
 
@@ -375,7 +373,7 @@ const umur = 15;
 const kota = "Garut";
 const hobi = "Tidur";
 const citaCita = "CEO";
-const sekolah = "Smk Negeri 1 Garut";
+const sekolah = "SMK Negeri 1 Garut";
 const tinggi = 162;
 
 console.log(nama);
@@ -389,7 +387,7 @@ console.log(sekolah);
 console.log(tinggi);
 ```
 
-### Tambahkan minimal 2 variable baru
+### Tambahkan minimal 2 variable baru.
 
 **Variable tambahan:**
 
@@ -404,7 +402,7 @@ Jawab sendiri terlebih dahulu.
 
 **Menurutmu, mengapa programmer membutuhkan variable?**
 
-**Jawab:** Karena programmer membutuhkan variable untuk menyimpan data di dalam program supaya data tersebut bisa dipakai, dibaca, dan diubah kapanpun.
+**Jawab:** karena programmer membutuhkan variable untuk menyimpan data di dalam program supaya data tersebut bisa dipakai, dibaca, dan diubah kapan pun
 
 ### Pair
 
@@ -418,32 +416,32 @@ Bandingkan jawabanmu dengan teman.
 
 Berikan tanda ✓ sesuai dengan pemahamanmu.
 
-| Pertanyaan | Status |
-|---|---|
-| Saya memahami pengertian variable | ✓ |
-| Saya dapat membuat variable dengan `let` | ✓ |
-| Saya memahami penggunaan `const` | ✓ |
-| Saya dapat menyimpan data ke dalam variable | ✓ |
-| Saya dapat menampilkan variable dengan `console.log()` | ✓ |
-| Saya dapat memberikan nama variable dengan benar | ✓ |
-| Saya dapat menemukan kesalahan variable | ✓ |
+| Pertanyaan                                             | Belum Paham | Mulai Paham | Paham |
+| ------------------------------------------------------ | :---------: | :---------: | :---: |
+| Saya memahami pengertian variable                      |             |      ✓      |       |
+| Saya dapat membuat variable dengan `let`               |             |      ✓      |       |
+| Saya memahami penggunaan `const`                       |             |      ✓      |       |
+| Saya dapat menyimpan data ke dalam variable            |             |      ✓      |       |
+| Saya dapat menampilkan variable dengan `console.log()` |             |      ✓      |       |
+| Saya dapat memberikan nama variable dengan benar       |             |      ✓      |       |
+| Saya dapat menemukan kesalahan variable                |             |      ✓      |       |
 
 ## S. REFLEKSI 3-2-1
 
 ### 3 Hal yang Saya Pelajari
 
-1. Variable adalah tempat untuk menyimpan sebuah data agar data tersebut dapat digunakan kembali oleh program.
+1. variable adalah tempat untuk menyimpan sebuah data agar data tersebut dapat digunakan kembali oleh program.
 2. `let` digunakan untuk data yang masih mungkin berubah, sedangkan `const` digunakan untuk data yang tidak perlu diubah.
-3. Nama variabel mempunyai aturan untuk tidak boleh diawali angka, tidak boleh menggunakan spasi, dan tidak boleh menggunakan tanda hubung (`-`).
+3. nama variable mempunyai aturan untuk tidak boleh diawali angka, tidak boleh menggunakan spasi, dan tidak boleh menggunakan tanda hubung (`-`)
 
 ### 2 Hal yang Masih Membingungkan
 
-1. Kapan sebaiknya memakai `let` dan `const`.
-2. Misalnya kalau angka 17 menggunakan tipe data string apakah bisa.
+1. kapan sebaiknya memakai `let` dan `const`
+2. misalnya kalau angka 17 menggunakan tipe data string apakah bisa
 
 ### 1 Hal yang Ingin Saya Coba
 
-1. Membuat program menentukan nilai rata-rata dari setiap mata pelajaran.
+1. membuat program menentukan nilai rata-rata dari setiap mata pelajaran
 
 ## T. KESIMPULAN
 
@@ -451,15 +449,11 @@ Lengkapi kalimat berikut.
 
 **Variable** adalah tempat untuk menyimpan sebuah data agar data tersebut dapat digunakan kembali oleh program.
 
-**`let`** digunakan untuk data yang masih mungkin berubah.
+**`let`** digunakan untuk data yang masih mungkin berubah
 
-**`const`** digunakan untuk data yang tidak perlu diubah.
+**`const`** digunakan untuk data yang tidak perlu diubah
 
-Untuk menampilkan isi variable ke Console kita dapat menggunakan:
-
-```javascript
-console.log();
-```
+Untuk menampilkan isi variable ke Console kita dapat menggunakan `console.log();`
 
 ## U. TUGAS INDIVIDU
 
@@ -503,7 +497,9 @@ console.log(merek);
 console.log(statusProduk);
 ```
 
-**Screenshot**
+**Screenshot:**
+
+![Screenshot 8](images/image8.png)
 
 ## X. EXIT TICKET
 
@@ -519,8 +515,4 @@ Sebelum meninggalkan kelas, jawab tiga pertanyaan berikut.
 
 ### 3. Tuliskan satu contoh variable JavaScript.
 
-**Jawab:**
-
-```javascript
-let nama = "Azkia";
-```
+**Jawab:** `let nama = "Azkia";`
