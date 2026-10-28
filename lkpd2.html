@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD Interaktif - Input, Output & Operator JavaScript (Kunci Jawaban)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .print-break { page-break-before: always; }
+            .shadow-lg, .shadow-md { box-shadow: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-700 text-white shadow-md no-print">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold tracking-wide">LKPD - Input, Output & Operator</h1>
+                <p class="text-indigo-200 text-xs md:text-sm">SMKN 1 GARUT • Dasar-Dasar PPLG • JavaScript</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="window.print()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition shadow">
+                    <i class="fas fa-print"></i> Cetak / Simpan PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-6">
+
+        <!-- Header Informasi Cetak -->
+        <div class="hidden print:block border-b-2 border-slate-800 pb-4 mb-6">
+            <h1 class="text-2xl font-bold text-center">LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+            <h2 class="text-lg font-semibold text-center text-slate-700">B. INPUT, OUTPUT & OPERATOR JAVASCRIPT</h2>
+            <p class="text-xs text-center text-slate-500 mt-1">SMKN 1 GARUT - Dasar-Dasar PPLG</p>
+        </div>
+
+        <!-- Identitas Siswa -->
+        <section class="bg-white rounded-xl shadow-md p-5 mb-6 border border-slate-200">
+            <h2 class="text-base font-bold text-indigo-700 mb-3 flex items-center gap-2">
+                <i class="fas fa-user-edit"></i> Identitas Siswa
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap:</label>
+                    <input type="text" id="identitas-nama" value="Azkia Nurul Qolbi" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas:</label>
+                    <input type="text" id="identitas-kelas" value="X PPL 2" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Tanggal:</label>
+                    <input type="date" id="identitas-tanggal" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+            </div>
+        </section>
+
+        <!-- Petunjuk Pengerjaan -->
+        <section class="bg-indigo-50 border-l-4 border-indigo-600 rounded-r-xl p-4 mb-6 text-sm text-indigo-900 no-print">
+            <h3 class="font-bold flex items-center gap-2 mb-1">
+                <i class="fas fa-info-circle"></i> Petunjuk Pengerjaan
+            </h3>
+            <ul class="list-disc list-inside space-y-1 text-xs md:text-sm text-indigo-800">
+                <li>Kerjakan berurutan dari Aktivitas 1 sampai Aktivitas 9.</li>
+                <li>Jalankan kode pada fitur simulator yang disediakan dan amati hasilnya.</li>
+                <li>Pahami fungsi setiap baris kode, jangan sekadar menyalin.</li>
+                <li>Jika terjadi <i>error</i>, baca pesan error dan cari penyebabnya.</li>
+            </ul>
+        </section>
+
+        <!-- Navigasi Tab -->
+        <div class="mb-6 border-b border-slate-300 no-print overflow-x-auto scrollbar-thin">
+            <div class="flex space-x-2 min-w-max pb-2">
+                <button onclick="switchTab('tab-aktivitas')" id="btn-tab-aktivitas" class="px-4 py-2 font-semibold text-sm rounded-t-lg bg-indigo-600 text-white border-b-2 border-indigo-600 transition">
+                    <i class="fas fa-tasks mr-1"></i> Aktivitas LKPD (1 - 9)
+                </button>
+                <button onclick="switchTab('tab-bahan-ajar')" id="btn-tab-bahan-ajar" class="px-4 py-2 font-semibold text-sm rounded-t-lg bg-white text-slate-600 hover:bg-slate-200 border-b-2 border-transparent transition">
+                    <i class="fas fa-book-open mr-1"></i> C. Bahan Ajar
+                </button>
+                <button onclick="switchTab('tab-asesmen')" id="btn-tab-asesmen" class="px-4 py-2 font-semibold text-sm rounded-t-lg bg-white text-slate-600 hover:bg-slate-200 border-b-2 border-transparent transition">
+                    <i class="fas fa-pen-nib mr-1"></i> D. Asesmen Formatif
+                </button>
+                <button onclick="switchTab('tab-refleksi')" id="btn-tab-refleksi" class="px-4 py-2 font-semibold text-sm rounded-t-lg bg-white text-slate-600 hover:bg-slate-200 border-b-2 border-transparent transition">
+                    <i class="fas fa-clipboard-check mr-1"></i> Refleksi & Exit Ticket
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= TAB 1: AKTIVITAS LKPD (1 - 9) ================= -->
+        <div id="tab-aktivitas" class="tab-content space-y-6">
+
+            <!-- Aktivitas 1 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4 flex items-center justify-between">
+                    <span>Aktivitas 1 – Prediksi</span>
+                    <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full">Operator Dasar</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <pre class="bg-slate-900 text-emerald-400 p-4 rounded-lg text-xs md:text-sm font-mono overflow-x-auto">
+let a = 10;
+let b = 5;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);</pre>
+                    <div class="flex flex-col justify-between">
+                        <table class="w-full text-xs text-left border-collapse border border-slate-300">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700">
+                                    <th class="border border-slate-300 p-2">Operasi</th>
+                                    <th class="border border-slate-300 p-2">Prediksi</th>
+                                    <th class="border border-slate-300 p-2">Hasil Sebenarnya</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-slate-300 p-2 font-mono">a + b</td>
+                                    <td class="border border-slate-300 p-1"><input type="text" id="pred-1" value="15" class="w-full p-1 border rounded text-xs"></td>
+                                    <td class="border border-slate-300 p-2 font-mono text-emerald-600 font-bold" id="res-1">15</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 p-2 font-mono">a - b</td>
+                                    <td class="border border-slate-300 p-1"><input type="text" id="pred-2" value="5" class="w-full p-1 border rounded text-xs"></td>
+                                    <td class="border border-slate-300 p-2 font-mono text-emerald-600 font-bold" id="res-2">5</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 p-2 font-mono">a * b</td>
+                                    <td class="border border-slate-300 p-1"><input type="text" id="pred-3" value="50" class="w-full p-1 border rounded text-xs"></td>
+                                    <td class="border border-slate-300 p-2 font-mono text-emerald-600 font-bold" id="res-3">50</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 p-2 font-mono">a / b</td>
+                                    <td class="border border-slate-300 p-1"><input type="text" id="pred-4" value="2" class="w-full p-1 border rounded text-xs"></td>
+                                    <td class="border border-slate-300 p-2 font-mono text-emerald-600 font-bold" id="res-4">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button onclick="runAktivitas1()" class="mt-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 px-3 rounded font-semibold transition no-print">
+                            <i class="fas fa-play mr-1"></i> Jalankan Kode & Cek Hasil
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Apakah prediksi kamu benar?</label>
+                    <div class="flex items-center gap-4 text-xs text-slate-700 mb-2">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="akt1-check" value="Ya" checked> Ya</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="akt1-check" value="Sebagian"> Sebagian</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="akt1-check" value="Tidak"> Tidak</label>
+                    </div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Mengapa?</label>
+                    <textarea id="akt1-mengapa" rows="2" class="w-full p-2 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-indigo-500">Karena operator +, -, *, dan / secara berturutan berfungsi untuk operasi aritmatika dasar penjumlahan, pengurangan, perkalian, dan pembagian.</textarea>
+                <img src="ss2/1.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">    </div>
+            </div>
+
+            <!-- Aktivitas 2 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 2 – Eksperimen Modulo (%)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <pre class="bg-slate-900 text-emerald-400 p-4 rounded-lg text-xs md:text-sm font-mono">
+let a = 20;
+let b = 4;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);</pre>
+                    <div class="space-y-2 text-xs">
+                        <p class="font-semibold text-slate-700">Hasil Prediksi & Eksekusi Kode:</p>
+                        <div class="grid grid-cols-2 gap-2 font-mono">
+                            <span>a + b = <input type="text" id="akt2-p1" value="24" class="w-16 border rounded px-1 font-bold text-indigo-600"></span>
+                            <span>a - b = <input type="text" id="akt2-p2" value="16" class="w-16 border rounded px-1 font-bold text-indigo-600"></span>
+                            <span>a * b = <input type="text" id="akt2-p3" value="80" class="w-16 border rounded px-1 font-bold text-indigo-600"></span>
+                            <span>a / b = <input type="text" id="akt2-p4" value="5" class="w-16 border rounded px-1 font-bold text-indigo-600"></span>
+                            <span>a % b = <input type="text" id="akt2-p5" value="0" class="w-16 border rounded px-1 font-bold text-emerald-600"></span>
+                        </div>
+                        <button onclick="runAktivitas2()" class="mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 px-3 rounded font-semibold transition no-print">
+                            <i class="fas fa-play mr-1"></i> Uji Eksperimen
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Apa yang kamu temukan?</label>
+                    <textarea id="akt2-temukan" rows="2" class="w-full p-2 border border-slate-300 rounded text-xs">Operator % (modulo) adalah operator sisa hasil pembagian. Karena 20 dibagi 4 adalah 5 tanpa sisa, maka sisa pembagiannya adalah 0.</textarea>
+                    <img src="ss2/2.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">  
+            </div>
+            </div>
+
+            <!-- Aktivitas 3 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 3 – Input dengan prompt()</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <pre class="bg-slate-900 text-emerald-400 p-4 rounded-lg text-xs md:text-sm font-mono">
+let nama = prompt("Masukkan nama:");
+console.log(nama);
+
+let umur = prompt("Masukkan umur:");
+console.log(umur);</pre>
+                    <div class="flex flex-col justify-center items-start gap-3">
+                        <button onclick="runAktivitas3()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-2 px-4 rounded-lg font-semibold transition shadow no-print">
+                            <i class="fas fa-vial mr-1"></i> Coba Fitur prompt() Real-time
+                        </button>
+                        <div id="akt3-output" class="w-full p-3 bg-slate-100 rounded border font-mono text-xs text-slate-700 min-h-[60px]">
+                            > console.log(nama) &rarr; <b>Azkia</b><br>> console.log(umur) &rarr; <b>15</b>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Apa fungsi prompt()?</label>
+                    <textarea id="akt3-fungsi" rows="2" class="w-full p-2 border border-slate-300 rounded text-xs">Fungsi prompt() digunakan untuk menerima/mengambil input masukan data dari pengguna dalam bentuk dialog pop-up browser untuk disimpan ke dalam variabel.</textarea>
+                    <img src="ss2/3n.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                    <img src="ss2/3a.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;"> 
+                    <img src="ss2/3n.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">                    
+
+                </div>
+            </div>
+
+
+            <!-- Aktivitas 4 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 4 – Menghitung Umur</h3>
+                <pre class="bg-slate-900 text-emerald-400 p-4 rounded-lg text-xs md:text-sm font-mono mb-4">
+let tahunLahir = prompt("Masukkan tahun lahir:");
+let tahunSekarang = 2026;
+let umur = tahunSekarang - tahunLahir;
+console.log(umur);</pre>
+                <div class="flex flex-wrap items-center gap-3 bg-slate-50 p-3 rounded-lg border mb-4">
+                    <button onclick="runAktivitas4()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 px-3 rounded font-semibold transition no-print">
+                        <i class="fas fa-calculator mr-1"></i> Uji Dengan Tahun Lahir Kamu
+                    </button>
+                    <span class="text-xs font-semibold">Uji dengan tahun lahir kamu: Umur = <span id="akt4-hasil" class="text-indigo-600 font-bold text-sm">15</span> tahun</span>
+                    <img src="ss2/4a.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                    <img src="ss2/4b.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                        
+                    
+                </div>
+            </div>
+
+            <!-- Aktivitas 5 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 5 – Mesin Kasir Mini</h3>
+                <pre class="bg-slate-900 text-emerald-400 p-4 rounded-lg text-xs md:text-sm font-mono mb-4">
+let harga = prompt("Masukkan harga:");
+let jumlah = prompt("Masukkan jumlah:");
+let total = harga * jumlah;
+console.log(total);</pre>
+                <div class="flex flex-wrap items-center gap-3 bg-slate-50 p-3 rounded-lg border">
+                    <button onclick="runAktivitas5()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 px-3 rounded font-semibold transition no-print">
+                        <i class="fas fa-cash-register mr-1"></i> Uji (Harga = 5000, Jumlah = 4)
+                    </button>
+                    <span class="text-xs font-semibold">Uji: Harga = 5000, Jumlah = 4. Total = <span id="akt5-hasil" class="text-emerald-600 font-bold text-sm">Rp 20.000</span></span>
+                    <img src="ss2/5a.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                    <img src="ss2/5b.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                    <img src="ss2/5c.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+
+            </div>
+            </div>
+
+            <!-- Aktivitas 6 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 6 – Think Pair Share</h3>
+                <div class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">THINK: Mengapa membutuhkan variable total?</label>
+                        <textarea id="akt6-think" rows="2" class="w-full p-2 border border-slate-300 rounded">Karena variabel total digunakan untuk menampung hasil operasi perkalian (harga * jumlah) agar nilai akhirnya tersimpan dengan aman dan mudah dipanggil kembali saat ingin ditampilkan.</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">PAIR: Jawaban sama?</label>
+                        <div class="flex items-center gap-4 mb-2">
+                            <label><input type="radio" name="akt6-pair" value="Ya" checked> Ya</label>
+                            <label><input type="radio" name="akt6-pair" value="Tidak"> Tidak</label>
+                        </div>
+                        <label class="block font-semibold text-slate-600 mb-1">Jika berbeda, jelaskan perbedaannya:</label>
+                        <textarea id="akt6-berbeda" rows="1" class="w-full p-2 border border-slate-300 rounded">-</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">SHARE: Kesimpulan kelompok:</label>
+                        <textarea id="akt6-share" rows="2" class="w-full p-2 border border-slate-300 rounded">Variabel penampung seperti total sangat penting dalam struktur program agar alur perhitungan terpisah dengan jelas dari alur output.</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aktivitas 7 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 7 – Challenge: Warung Digital</h3>
+                <p class="text-xs text-slate-600 mb-3">Program warung digital memasukkan nama makanan, harga, jumlah, lalu menampilkan total dan diskon 10%:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Kode JavaScript Lengkap:</label>
+                        <textarea id="akt7-code" rows="10" class="w-full p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded-lg">let makanan = prompt("Nama makanan:");
+let harga = prompt("Harga:");
+let jumlah = prompt("Jumlah:");
+
+let total = harga * jumlah;
+let diskon = total * (10 / 100);
+let totalBayar = total - diskon;
+
+console.log("Makanan: " + makanan);
+console.log("Harga: Rp " + harga);
+console.log("Jumlah: " + jumlah);
+console.log("Total: Rp " + total);
+console.log("Diskon 10%: Rp " + diskon);
+console.log("Total Bayar: Rp " + totalBayar);</textarea>
+                        <button onclick="runAktivitas7()" class="mt-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-2 px-3 rounded font-semibold transition no-print">
+                            <i class="fas fa-play mr-1"></i> Jalankan Program Warung
+                        </button>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Hasil Output Program:</label>
+                        <div id="akt7-output" class="w-full h-56 bg-slate-100 p-3 rounded-lg border font-mono text-xs overflow-y-auto">
+                            > Makanan: Nasi Goreng<br>
+                            > Harga: Rp 15000<br>
+                            > Jumlah: 2<br>
+                            > Total: Rp 30000<br>
+                            > Diskon 10%: Rp 3000<br>
+                            > Total Bayar: Rp 27000
+                        </div>
+                        <img src="ss2/7a.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                        <img src="ss2/7b.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                        <img src="ss2/7c.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                        <img src="ss2/7d.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">             
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aktivitas 8 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 8 – Debugging</h3>
+                <pre class="bg-slate-900 text-red-400 p-3 rounded-lg text-xs font-mono mb-4">
+let harga = 5000;
+let jumlah = 3;
+let total harga = harga * jumlah;
+console.log(total harga);</pre>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Kesalahan:</label>
+                        <input type="text" id="akt8-kesalahan" value="Penulisan nama variabel 'total harga' menggunakan spasi. Sintaks nama variabel di JavaScript tidak boleh menggunakan spasi." class="w-full p-2 border border-slate-300 rounded text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Perbaikan kode:</label>
+                        <textarea id="akt8-perbaikan" rows="4" class="w-full p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded">let harga = 5000;
+let jumlah = 3;
+let totalHarga = harga * jumlah; // nama variabel diubah jadi camelCase tanpa spasi
+console.log(totalHarga);</textarea>
+                    </div>
+                    <img src="ss2/8.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+                </div>
+            </div>
+
+            <!-- Aktivitas 9 -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Aktivitas 9 – Challenge Mandiri: Kalkulator Tabungan</h3>
+                <p class="text-xs text-slate-600 mb-3">Buat program yang meminta uang awal, tabungan hari pertama, kedua, dan ketiga, lalu menghitung totalnya.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="space-y-2 text-xs">
+                        <label class="block font-semibold">Simulasi Perhitungan:</label>
+                        <div>Uang Awal: <input type="number" id="tab-awal" class="w-full p-1 border rounded" value="10000"></div>
+                        <div>Hari Ke-1: <input type="number" id="tab-h1" class="w-full p-1 border rounded" value="5000"></div>
+                        <div>Hari Ke-2: <input type="number" id="tab-h2" class="w-full p-1 border rounded" value="5000"></div>
+                        <div>Hari Ke-3: <input type="number" id="tab-h3" class="w-full p-1 border rounded" value="10000"></div>
+                        <button onclick="calcTabungan()" class="w-full bg-indigo-600 text-white py-1.5 rounded font-semibold no-print">Hitung Total Tabungan</button>
+                    </div>
+                    <div class="flex flex-col justify-center items-center bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                        <span class="text-xs text-indigo-700 font-semibold mb-1">Total Tabungan Akhir</span>
+                        <span id="tab-total-display" class="text-2xl font-bold text-indigo-900">Rp 30.000</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= TAB 2: BAHAN AJAR ================= -->
+        <div id="tab-bahan-ajar" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 space-y-6 text-xs md:text-sm">
+                <h2 class="text-xl font-bold text-indigo-700 border-b pb-2">C. BAHAN AJAR</h2>
+
+                <section>
+                    <h3 class="font-bold text-slate-800 mb-1">1. Mengingat Variable</h3>
+                    <p class="text-slate-600 mb-2">Variable adalah tempat untuk menyimpan data.</p>
+                    <pre class="bg-slate-900 text-emerald-400 p-3 rounded font-mono text-xs">
+let nama = "Budi";
+let umur = 17;
+let nilai = 85;</pre>
+                </section>
+
+                <section>
+                    <h3 class="font-bold text-slate-800 mb-1">2. Input – Process – Output</h3>
+                    <pre class="bg-slate-900 text-emerald-400 p-3 rounded font-mono text-xs">
+let harga = 5000;
+let jumlah = 3;
+let total = harga * jumlah;
+console.log(total);</pre>
+                    </section>
+                <section>
+                    <h3 class="font-bold text-slate-800 mb-2">3. Operator Aritmatika</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left border-collapse border border-slate-300">
+                            <tr class="bg-indigo-600 text-white">
+                                <th class="p-2 border">Operator</th>
+                                <th class="p-2 border">Fungsi</th>
+                                <th class="p-2 border">Contoh</th>
+                                <th class="p-2 border">Hasil</th>
+                            </tr>
+                            <tr><td class="p-2 border font-mono font-bold">+</td><td class="p-2 border">Penjumlahan</td><td class="p-2 border font-mono">10 + 5</td><td class="p-2 border font-mono">15</td></tr>
+                            <tr><td class="p-2 border font-mono font-bold">-</td><td class="p-2 border">Pengurangan</td><td class="p-2 border font-mono">10 - 5</td><td class="p-2 border font-mono">5</td></tr>
+                            <tr><td class="p-2 border font-mono font-bold">*</td><td class="p-2 border">Perkalian</td><td class="p-2 border font-mono">10 * 5</td><td class="p-2 border font-mono">50</td></tr>
+                            <tr><td class="p-2 border font-mono font-bold">/</td><td class="p-2 border">Pembagian</td><td class="p-2 border font-mono">10 / 5</td><td class="p-2 border font-mono">2</td></tr>
+                            <tr><td class="p-2 border font-mono font-bold">%</td><td class="p-2 border">Sisa pembagian</td><td class="p-2 border font-mono">10 % 3</td><td class="p-2 border font-mono">1</td></tr>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: ASESMEN FORMATIF ================= -->
+        <div id="tab-asesmen" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h2 class="text-xl font-bold text-indigo-700 border-b pb-2 mb-4">D. ASESMEN FORMATIF</h2>
+                
+                <div class="space-y-4 text-xs md:text-sm">
+                    <div class="p-3 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-1">• Apa output dari `let a = 8; let b = 2; console.log(a + b);`?</p>
+                        <label class="block font-semibold text-emerald-700 mb-1">Jawaban:</label>
+                        <input type="text" id="quiz-1" value="10" class="w-full p-2 border border-slate-300 rounded text-xs font-bold">
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-1">• Apa output dari `let a = 10; let b = 3; console.log(a % b);`?</p>
+                        <label class="block font-semibold text-emerald-700 mb-1">Jawaban:</label>
+                        <input type="text" id="quiz-2" value="1" class="w-full p-2 border border-slate-300 rounded text-xs font-bold">
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-1">• Apa fungsi prompt()?</p>
+                        <label class="block font-semibold text-emerald-700 mb-1">Jawaban:</label>
+                        <textarea id="quiz-3" rows="2" class="w-full p-2 border border-slate-300 rounded text-xs">Fungsi prompt() digunakan untuk menampilkan dialog interaktif guna menerima masukan input data dari user yang nantinya dapat diolah di dalam program.</textarea>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-1">• Buat program menghitung luas persegi panjang dengan panjang 10 dan lebar 5</p>
+                        <label class="block font-semibold text-emerald-700 mb-1">Jawaban:</label>
+                        <textarea id="quiz-4" rows="4" class="w-full p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded">let panjang = 10;
+let lebar = 5;
+let luas = panjang * lebar;
+console.log(luas);</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: REFLEKSI & EXIT TICKET ================= -->
+        <div id="tab-refleksi" class="tab-content hidden space-y-6">
+
+            <!-- Rubrik Penilaian -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h2 class="text-xl font-bold text-indigo-700 border-b pb-2 mb-4">E. RUBRIK PENILAIAN</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left border-collapse border border-slate-300">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="border p-2">Aspek</th>
+                                <th class="border p-2 text-center">1</th>
+                                <th class="border p-2 text-center">2</th>
+                                <th class="border p-2 text-center">3</th>
+                                <th class="border p-2 text-center">4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="border p-2 font-semibold">Memahami input-output</td><td class="border text-center"><input type="radio" name="rub1"></td><td class="border text-center"><input type="radio" name="rub1"></td><td class="border text-center"><input type="radio" name="rub1"></td><td class="border text-center"><input type="radio" name="rub1" checked></td></tr>
+                            <tr><td class="border p-2 font-semibold">Penggunaan variable</td><td class="border text-center"><input type="radio" name="rub2"></td><td class="border text-center"><input type="radio" name="rub2"></td><td class="border text-center"><input type="radio" name="rub2"></td><td class="border text-center"><input type="radio" name="rub2" checked></td></tr>
+                            <tr><td class="border p-2 font-semibold">Penggunaan operator</td><td class="border text-center"><input type="radio" name="rub3"></td><td class="border text-center"><input type="radio" name="rub3"></td><td class="border text-center"><input type="radio" name="rub3"></td><td class="border text-center"><input type="radio" name="rub3" checked></td></tr>
+                            <tr><td class="border p-2 font-semibold">Debugging</td><td class="border text-center"><input type="radio" name="rub4"></td><td class="border text-center"><input type="radio" name="rub4"></td><td class="border text-center"><input type="radio" name="rub4"></td><td class="border text-center"><input type="radio" name="rub4" checked></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Refleksi Pembelajaran -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h2 class="text-xl font-bold text-indigo-700 border-b pb-2 mb-4">F. REFLEKSI PEMBELAJARAN MENDALAM</h2>
+                <div class="space-y-3 text-xs md:text-sm">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Berkesadaran: Hari ini saya menyadari bahwa...</label>
+                        <textarea id="ref-1" rows="2" class="w-full p-2 border rounded text-xs">Penulisan kode program harus teliti, terutama dalam nama variabel dan pemilihan jenis operator yang digunakan.</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Bermakna: Materi ini dapat digunakan untuk...</label>
+                        <textarea id="ref-2" rows="2" class="w-full p-2 border rounded text-xs">Membuat aplikasi kasir sederhana, kalkulator interaktif, dan aplikasi logika pemrograman dasar.</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Menggembirakan: Bagian pembelajaran yang paling saya sukai...</label>
+                        <textarea id="ref-3" rows="2" class="w-full p-2 border rounded text-xs">Saat mencoba eksperimen operator modulo (%) dan debugging memperbaiki error variabel pada kode.</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exit Ticket -->
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200">
+                <h2 class="text-xl font-bold text-indigo-700 border-b pb-2 mb-4">G. EXIT TICKET</h2>
+                <div class="space-y-3 text-xs md:text-sm">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">1. Satu hal yang sudah saya kuasai:</label>
+                        <input type="text" id="exit-1" value="Penggunaan operator dasar aritmatika dan penulisan variabel let di JavaScript." class="w-full p-2 border rounded text-xs">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">2. Satu hal yang masih membingungkan:</label>
+                        <input type="text" id="exit-2" value="Konversi otomatis string ke number saat menerima masukan prompt()." class="w-full p-2 border rounded text-xs">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">3. Satu hal yang ingin saya coba:</label>
+                        <input type="text" id="exit-3" value="Membuat program diskon warung digital yang lebih komplek dengan percabangan (if-else)." class="w-full p-2 border rounded text-xs">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-500 border-t mt-10 no-print">
+        <p>© 2026 SMKN 1 GARUT • Dasar-Dasar PPLG • Modul Interaktif JavaScript</p>
+    </footer>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        document.getElementById('identitas-tanggal').valueAsDate = new Date();
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+
+            const btnIds = ['tab-aktivitas', 'tab-bahan-ajar', 'tab-asesmen', 'tab-refleksi'];
+            btnIds.forEach(id => {
+                const btn = document.getElementById('btn-' + id);
+                if (id === tabId) {
+                    btn.className = "px-4 py-2 font-semibold text-sm rounded-t-lg bg-indigo-600 text-white border-b-2 border-indigo-600 transition";
+                } else {
+                    btn.className = "px-4 py-2 font-semibold text-sm rounded-t-lg bg-white text-slate-600 hover:bg-slate-200 border-b-2 border-transparent transition";
+                }
+            });
+        }
+
+        function runAktivitas1() {
+            let a = 10, b = 5;
+            document.getElementById('res-1').innerText = a + b;
+            document.getElementById('res-2').innerText = a - b;
+            document.getElementById('res-3').innerText = a * b;
+            document.getElementById('res-4').innerText = a / b;
+        }
+
+        function runAktivitas2() {
+            let a = 20, b = 4;
+            document.getElementById('akt2-p1').value = a + b;
+            document.getElementById('akt2-p2').value = a - b;
+            document.getElementById('akt2-p3').value = a * b;
+            document.getElementById('akt2-p4').value = a / b;
+            document.getElementById('akt2-p5').value = a % b;
+        }
+
+        function runAktivitas3() {
+            let nama = prompt("Masukkan nama:");
+            let umur = prompt("Masukkan umur:");
+            const out = document.getElementById('akt3-output');
+            out.innerHTML = `> console.log(nama) &rarr; <b>${nama || 'null'}</b><br>> console.log(umur) &rarr; <b>${umur || 'null'}</b>`;
+        }
+
+        function runAktivitas4() {
+            let tahunLahir = prompt("Masukkan tahun lahir:");
+            if (tahunLahir) {
+                let tahunSekarang = 2026;
+                let umur = tahunSekarang - parseInt(tahunLahir);
+                document.getElementById('akt4-hasil').innerText = isNaN(umur) ? "Input tidak valid" : umur;
+            }
+        }
+
+        function runAktivitas5() {
+            let harga = 5000;
+            let jumlah = 4;
+            let total = harga * jumlah;
+            document.getElementById('akt5-hasil').innerText = "Rp " + total.toLocaleString('id-ID');
+        }
+
+        function runAktivitas7() {
+            const code = document.getElementById('akt7-code').value;
+            const out = document.getElementById('akt7-output');
+            out.innerHTML = "";
+
+            const logs = [];
+            const originalLog = console.log;
+
+            console.log = function(...args) {
+                logs.push(args.join(" "));
+            };
+
+            try {
+                eval(code);
+                if (logs.length > 0) {
+                    out.innerHTML = logs.map(l => `> ${l}`).join('<br>');
+                } else {
+                    out.innerHTML = "<span class='text-slate-400'>Program selesai tanpa output.</span>";
+                }
+            } catch (err) {
+                out.innerHTML = `<span class='text-red-500'>Error: ${err.message}</span>`;
+            } finally {
+                console.log = originalLog;
+            }
+        }
+
+        function calcTabungan() {
+            let awal = parseFloat(document.getElementById('tab-awal').value) || 0;
+            let h1 = parseFloat(document.getElementById('tab-h1').value) || 0;
+            let h2 = parseFloat(document.getElementById('tab-h2').value) || 0;
+            let h3 = parseFloat(document.getElementById('tab-h3').value) || 0;
+
+            let total = awal + h1 + h2 + h3;
+            document.getElementById('tab-total-display').innerText = "Rp " + total.toLocaleString('id-ID');
+        }
+    </script>
+</body>
+</html>
