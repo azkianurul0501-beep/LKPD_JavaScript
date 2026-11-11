@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD JavaScript: String, Number, & Konversi Data - Azkia Nurul Qolbi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-600 selection:text-white">
+
+    <!-- Top Notification Banner -->
+    <div class="bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm">
+        <i class="fa-solid fa-graduation-cap mr-2"></i> SMKN 1 Garut &bull; Dasar-Dasar PPLG &bull; Fase E &bull; Tahun Ajaran 2026/2027
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center shadow-md shadow-indigo-500/20 text-white">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-slate-900">LKPD Interaktif JS</span>
+                        <span class="block text-xs text-indigo-600 font-semibold">Azkia Nurul Qolbi | X PPLG 2</span>
+                    </div>
+                </div>
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
+                    <a href="#profil" class="px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-indigo-600 transition">Profil</a>
+                    <a href="#aktivitas1" class="px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-indigo-600 transition">Aktivitas 1-3</a>
+                    <a href="#aktivitas4" class="px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-indigo-600 transition">Aktivitas 4 & Tantangan</a>
+                    <a href="#diskusi" class="px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-indigo-600 transition">Diskusi & Refleksi</a>
+                    <a href="#penilaian" class="px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-indigo-600 transition">Penilaian</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-slate-600 hover:text-indigo-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <a href="#profil" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">Profil</a>
+            <a href="#aktivitas1" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">Aktivitas 1-3</a>
+            <a href="#aktivitas4" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">Aktivitas 4 & Tantangan</a>
+            <a href="#diskusi" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">Diskusi & Refleksi</a>
+            <a href="#penilaian" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">Penilaian</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="relative overflow-hidden py-16 sm:py-24 bg-gradient-to-b from-indigo-50/50 via-slate-50 to-slate-50 border-b border-slate-200">
+        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700 border border-indigo-200 mb-6 shadow-sm">
+                <i class="fa-solid fa-laptop-code"></i> Lembar Kerja Peserta Didik (LKPD 3)
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                JavaScript: <span class="bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-800 bg-clip-text text-transparent">String, Number, & Konversi Data</span>
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+                Dokumentasi lengkap pengerjaan praktikum pemrograman dasar JavaScript oleh siswa SMK Negeri 1 Garut.
+            </p>
+
+            <!-- Student ID Card -->
+            <div id="profil" class="max-w-md mx-auto bg-white border border-slate-200 rounded-2xl p-6 shadow-xl shadow-slate-200/50 text-left relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-100 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-blue-600 flex items-center justify-center font-bold text-2xl text-white shadow-md">
+                        RS
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Azkia Nurul Qolbi</h2>
+                        <p class="text-xs text-indigo-600 font-semibold">Kelas: X PPLG 2 | No. Absen: 04</p>
+                        <p class="text-xs text-slate-500">SMKN 1 Garut</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                    <div><span class="font-semibold text-slate-700">Mata Pelajaran:</span> Dasar-Dasar PPLG</div>
+                    <div><span class="font-semibold text-slate-700">Alokasi Waktu:</span> 2 x 45 Menit</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- SECTION: TUJUAN & PETUNJUK -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100 font-bold">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">A. Tujuan Pembelajaran</h3>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex items-start"><i class="fa-solid fa-check text-indigo-600 mt-1 mr-2 text-xs"></i> Membedakan tipe data String dan Number.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-indigo-600 mt-1 mr-2 text-xs"></i> Menjelaskan bahwa fungsi prompt() menghasilkan String.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-indigo-600 mt-1 mr-2 text-xs"></i> Menggunakan Number() dan String() untuk konversi data.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-indigo-600 mt-1 mr-2 text-xs"></i> Menganalisis kesalahan yang timbul akibat tipe data.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-indigo-600 mt-1 mr-2 text-xs"></i> Membuat program input dan perhitungan sederhana.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 font-bold">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">B. Petunjuk Kerja</h3>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex items-start"><i class="fa-solid fa-arrow-right text-blue-600 mt-1 mr-2 text-xs"></i> Kerjakan mandiri terlebih dahulu dengan teliti.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-arrow-right text-blue-600 mt-1 mr-2 text-xs"></i> Diskusikan hasil melalui metode Think Pair Share.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-arrow-right text-blue-600 mt-1 mr-2 text-xs"></i> Simpan file kode sebagai <code class="bg-slate-100 px-1.5 py-0.5 rounded text-blue-600 font-mono text-xs font-semibold">lkpd_string_number_ryuga.js</code>.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-arrow-right text-blue-600 mt-1 mr-2 text-xs"></i> Unggah dokumentasi foto pengerjaan di setiap aktivitas pada kolom yang disediakan.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION: AKTIVITAS 1 -->
+        <section id="aktivitas1" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-md">1</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">C. Aktivitas 1 - Eksperimen 10 + 20</h3>
+                        <p class="text-xs text-slate-500">Prediksi hasil, jalankan kode, dan amati perilakunya.</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs rounded-full font-semibold w-fit">Konkatenasi String</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <!-- Code Box -->
+                <div class="space-y-4">
+                    <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 font-mono text-xs sm:text-sm text-slate-200 overflow-x-auto shadow-inner">
+                        <div class="text-slate-500 mb-2">// Simpan sebagai lkpd_string_number_azkia.js</div>
+                        <span class="text-purple-400">let</span> a = <span class="text-emerald-400">"10"</span>;<br>
+                        <span class="text-purple-400">let</span> b = <span class="text-emerald-400">"20"</span>;<br>
+                        console.<span class="text-blue-400">log</span>(a + b);
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                        <h4 class="text-xs font-bold text-indigo-700 uppercase tracking-wider">Simulasi Interaktif</h4>
+                        <button onclick="runAktivitas1()" class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i> Jalankan Kode di Konsol
+                        </button>
+                        <div id="output-akt1" class="hidden p-3 bg-slate-900 rounded-lg font-mono text-xs text-emerald-400 border border-slate-800"></div>
+                    </div>
+                </div>
+
+                <!-- Answers Form -->
+                <div class="space-y-4 text-sm">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Prediksi & Pertanyaan 1: Apa output program?</label>
+                        <textarea rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-700 focus:outline-none focus:border-indigo-500" readonly>Output program adalah "1020" (bukan 30).</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Mengapa hasil tersebut terjadi?</label>
+                        <textarea rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-700 focus:outline-none focus:border-indigo-500" readonly>Karena variabel 'a' dan 'b' diapit tanda kutip sehingga bertipe data String. Operator '+' pada string berfungsi menggabungkan (konkatenasi), bukan menjumlahkan secara aritmatika.</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Apakah a dan b bertipe Number?</label>
+                        <input type="text" value="Tidak, 'a' dan 'b' bertipe String." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-700 font-medium" readonly>
+                    </div>
+                </div>
+            </div>
+            <img src="ss3/c.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            </div>
+        </section>
+
+        <!-- SECTION: AKTIVITAS 2 -->
+        <section id="aktivitas2" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-md">2</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">D. Aktivitas 2 - Menemukan Tipe Data (typeof)</h3>
+                        <p class="text-xs text-slate-500">Menganalisis jenis tipe data variabel menggunakan operator typeof.</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs rounded-full font-semibold w-fit">Operator typeof</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <!-- Code Box -->
+                <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 font-mono text-xs sm:text-sm text-slate-200 shadow-inner">
+                    <span class="text-purple-400">let</span> nama = <span class="text-emerald-400">"Asep"</span>;<br>
+                    <span class="text-purple-400">let</span> umur = <span class="text-orange-400">16</span>;<br>
+                    console.<span class="text-blue-400">log</span>(<span class="text-yellow-400">typeof</span> nama); <span class="text-slate-500">// string</span><br>
+                    console.<span class="text-blue-400">log</span>(<span class="text-yellow-400">typeof</span> umur); <span class="text-slate-500">// number</span>
+                </div>
+
+                <!-- Interactive Test -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">Uji Eksekusi typeof</h4>
+                        <p class="text-xs text-slate-500 mb-3">Klik tombol untuk melihat hasil eksekusi operator typeof pada konsol.</p>
+                    </div>
+                    <button onclick="runAktivitas2()" class="py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> Jalankan typeof Test
+                    </button>
+                    <div id="output-akt2" class="hidden mt-3 p-3 bg-slate-900 rounded-lg font-mono text-xs text-emerald-400 border border-slate-800"></div>
+                </div>
+            </div>
+
+            <!-- Table of Results -->
+            <div class="mt-6 overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                            <th class="p-3 font-semibold">Variabel</th>
+                            <th class="p-3 font-semibold">Prediksi</th>
+                            <th class="p-3 font-semibold">Hasil typeof</th>
+                            <th class="p-3 font-semibold">Kesimpulan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr>
+                            <td class="p-3 font-mono font-semibold text-indigo-600">nama</td>
+                            <td class="p-3">string</td>
+                            <td class="p-3 font-mono text-emerald-600 font-semibold">string</td>
+                            <td class="p-3">Menyimpan teks berformat string ("Asep").</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-mono font-semibold text-indigo-600">umur</td>
+                            <td class="p-3">number</td>
+                            <td class="p-3 font-mono text-emerald-600 font-semibold">number</td>
+                            <td class="p-3">Menyimpan data numerik bulat (16).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 bg-indigo-50/60 p-4 rounded-xl border border-indigo-100 text-sm text-slate-700">
+                <strong class="text-indigo-700">Temuan Utama:</strong> String adalah tipe data teks yang diapit tanda kutip (bisa digabung dengan +), sedangkan Number adalah nilai angka murni yang dapat digunakan untuk operasi aritmatika (+, -, *, /).
+            </div>
+
+        <img src="ss3/d.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            </div>
+        </section>
+
+        <!-- SECTION: AKTIVITAS 3 -->
+        <section id="aktivitas3" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-md">3</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">E. Aktivitas 3 - Konversi String Menjadi Number</h3>
+                        <p class="text-xs text-slate-500">Memperbaiki program agar menghasilkan angka 30 menggunakan Number().</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs rounded-full font-semibold w-fit">Fungsi Number()</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <!-- Code Box -->
+                <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 font-mono text-xs sm:text-sm text-slate-200 shadow-inner">
+                    <span class="text-purple-400">let</span> a = <span class="text-emerald-400">"10"</span>;<br>
+                    <span class="text-purple-400">let</span> b = <span class="text-emerald-400">"20"</span>;<br>
+                    <span class="text-slate-500">// Perbaikan menggunakan Number()</span><br>
+                    <span class="text-purple-400">let</span> hasil = <span class="text-yellow-400">Number</span>(a) + <span class="text-yellow-400">Number</span>(b);<br>
+                    console.<span class="text-blue-400">log</span>(hasil); <span class="text-slate-500">// Output: 30</span>
+                </div>
+
+                <!-- Interactive Test -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">Uji Konversi Number()</h4>
+                        <p class="text-xs text-slate-500 mb-3">Klik tombol untuk menguji perhitungan setelah dikonversi.</p>
+                    </div>
+                    <button onclick="runAktivitas3()" class="py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> Jalankan Konversi
+                    </button>
+                    <div id="output-akt3" class="hidden mt-3 p-3 bg-slate-900 rounded-lg font-mono text-xs text-emerald-400 border border-slate-800"></div>
+                </div>
+            </div>
+
+        <img src="ss3/e.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            </div>
+        </section>
+
+        <!-- SECTION: AKTIVITAS 4 - PROGRAM KASIR SEDERHANA -->
+        <section id="aktivitas4" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-md">4</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">F. Aktivitas 4 - Program Kasir Sederhana</h3>
+                        <p class="text-xs text-slate-500">Simulasi kasir dengan input harga dan jumlah barang.</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs rounded-full font-semibold w-fit">Aplikasi Nyata</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <!-- Code Box -->
+                <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 font-mono text-xs sm:text-sm text-slate-200 shadow-inner">
+                    <span class="text-slate-500">// Kode Kasir Sederhana</span><br>
+                    <span class="text-purple-400">let</span> harga = <span class="text-yellow-400">Number</span>(<span class="text-blue-400">prompt</span>(<span class="text-emerald-400">"Masukkan harga: "</span>));<br>
+                    <span class="text-purple-400">let</span> jumlah = <span class="text-yellow-400">Number</span>(<span class="text-blue-400">prompt</span>(<span class="text-emerald-400">"Masukkan jumlah: "</span>));<br>
+                    <span class="text-purple-400">let</span> total = harga * jumlah;<br>
+                    console.<span class="text-blue-400">log</span>(<span class="text-emerald-400">"Total belanja = "</span> + total);
+                </div>
+
+                <!-- Interactive Kasir Simulator -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <h4 class="text-sm font-bold text-indigo-700"><i class="fa-solid fa-cash-register mr-2"></i>Simulator Kasir Interaktif</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Harga Barang (Rp):</label>
+                            <input type="number" id="input-harga" placeholder="Contoh: 15000" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Jumlah Barang:</label>
+                            <input type="number" id="input-jumlah" placeholder="Contoh: 3" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <button onclick="hitungKasir()" class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-indigo-600/20">
+                            Hitung Total Belanja
+                        </button>
+                    </div>
+                    <div id="output-kasir" class="hidden p-3 bg-slate-900 rounded-lg text-xs font-mono text-emerald-400 border border-slate-800"></div>
+                </div>
+            </div>
+
+            <!-- Table Input Uji -->
+            <div class="mt-6 overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                            <th class="p-3 font-semibold">Input Uji</th>
+                            <th class="p-3 font-semibold">Nilai Simulasi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr><td class="p-3 font-semibold">Harga Barang</td><td class="p-3 font-mono text-indigo-600 font-semibold">Rp 10.000</td></tr>
+                        <tr><td class="p-3 font-semibold">Jumlah Barang</td><td class="p-3 font-mono text-indigo-600 font-semibold">5 pcs</td></tr>
+                        <tr><td class="p-3 font-semibold">Total Seharusnya</td><td class="p-3 font-mono text-emerald-600 font-semibold">Rp 50.000</td></tr>
+                        <tr><td class="p-3 font-semibold">Total Program</td><td class="p-3 font-mono text-emerald-600 font-semibold">Rp 50.000 (Berhasil dikonversi)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <img src="ss3/f1.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            <img src="ss3/f2.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            <img src="ss3/f3.jpeg" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+
+            
+            </div>
+        </section>
+
+        <!-- SECTION: G. TANTANGAN - PROGRAM HITUNG NILAI -->
+        <section id="tantangan" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span class="w-10 h-10 rounded-xl bg-purple-600 text-white font-bold flex items-center justify-center shadow-md"><i class="fa-solid fa-trophy"></i></span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">G. Tantangan - Program Hitung Nilai Rata-Rata</h3>
+                        <p class="text-xs text-slate-500">Menghitung rata-rata nilai Tugas, UTS, dan UAS dengan Number().</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-purple-50 text-purple-700 border border-purple-200 text-xs rounded-full font-semibold w-fit">Tantangan Algoritma</span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <!-- Algoritma -->
+                <div class="space-y-4">
+                    <h4 class="text-sm font-bold text-purple-700"><i class="fa-solid fa-list-ol mr-2"></i>Algoritma Saya:</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <li>Membuat input prompt untuk nilai Tugas, UTS, dan UAS.</li>
+                        <li>Mengonversi setiap nilai input teks dari prompt() menjadi tipe data <code class="text-purple-600 font-mono font-semibold">Number()</code>.</li>
+                        <li>Menghitung jumlah total nilai: <code class="text-purple-600 font-mono font-semibold">(tugas + uts + uas)</code>.</li>
+                        <li>Membagi total nilai dengan 3 untuk mendapatkan nilai rata-rata.</li>
+                        <li>Menampilkan hasil rata-rata ke konsol menggunakan <code class="text-purple-600 font-mono font-semibold">console.log()</code>.</li>
+                    </ol>
+
+                    <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-200 shadow-inner">
+                        <span class="text-purple-400">let</span> tugas = <span class="text-yellow-400">Number</span>(<span class="text-blue-400">prompt</span>(<span class="text-emerald-400">"Nilai Tugas: "</span>));<br>
+                        <span class="text-purple-400">let</span> uts = <span class="text-yellow-400">Number</span>(<span class="text-blue-400">prompt</span>(<span class="text-emerald-400">"Nilai UTS: "</span>));<br>
+                        <span class="text-purple-400">let</span> uas = <span class="text-yellow-400">Number</span>(<span class="text-blue-400">prompt</span>(<span class="text-emerald-400">"Nilai UAS: "</span>));<br>
+                        <span class="text-purple-400">let</span> rerata = (tugas + uts + uas) / <span class="text-orange-400">3</span>;<br>
+                        console.<span class="text-blue-400">log</span>(<span class="text-emerald-400">"Nilai Rata-rata = "</span> + rerata);
+                    </div>
+                </div>
+
+                <!-- Simulator Nilai -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-purple-700 mb-3"><i class="fa-solid fa-calculator mr-2"></i>Simulator Hitung Rata-Rata</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Nilai Tugas:</label>
+                                <input type="number" id="input-tugas" placeholder="85" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Nilai UTS:</label>
+                                <input type="number" id="input-uts" placeholder="80" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Nilai UAS:</label>
+                                <input type="number" id="input-uas" placeholder="90" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-purple-500">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="hitungNilai()" class="w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-purple-600/20 mt-4">
+                        Hitung Rata-Rata Nilai
+                    </button>
+                    <div id="output-nilai" class="hidden p-3 bg-slate-900 rounded-lg text-xs font-mono text-emerald-400 border border-slate-800 mt-3"></div>
+                </div>
+            </div>
+
+            <img src="ss3/g1.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            <img src="ss3/g2.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            <img src="ss3/g3.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            <img src="ss3/g4.png" alt="Console Log Example" style="max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 0.5rem;">
+            </div>
+        </section>
+
+        <!-- SECTION: H. THINK PAIR SHARE -->
+        <section id="diskusi" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex items-center space-x-3 pb-6 border-b border-slate-100 mb-6">
+                <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-md"><i class="fa-solid fa-users"></i></span>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900">H. Think Pair Share (Diskusi Kelompok)</h3>
+                    <p class="text-xs text-slate-500">Pertanyaan diskusi bersama teman sejawat di kelas.</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-sm">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="font-semibold text-indigo-700 mb-1">1. Mengapa prompt() perlu dikonversi jika hasilnya ingin dihitung?</div>
+                    <p class="text-slate-600">Karena nilai yang dikembalikan oleh fungsi <code class="font-mono text-indigo-600 font-semibold">prompt()</code> selalu berupa tipe data <span class="text-amber-600 font-semibold">String</span> (teks). Jika tidak dikonversi dengan <code class="font-mono text-indigo-600 font-semibold">Number()</code>, operasi aritmatika seperti penjumlahan akan bertindak sebagai konkatenasi string (penggabungan teks).</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="font-semibold text-indigo-700 mb-1">2. Apa perbedaan "10" dengan 10?</div>
+                    <p class="text-slate-600"><code class="font-mono text-emerald-600 font-semibold">"10"</code> (dengan tanda kutip) adalah tipe data <span class="text-amber-600 font-semibold">String</span> yang mewakili karakter teks, sedangkan <code class="font-mono text-emerald-600 font-semibold">10</code> (tanpa tanda kutip) adalah tipe data <span class="text-orange-600 font-semibold">Number</span> yang mewakili nilai numerik murni untuk perhitungan matematis.</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="font-semibold text-indigo-700 mb-1">3. Apa yang terjadi jika lupa Number()?</div>
+                    <p class="text-slate-600">Program dapat mengalami kesalahan logika (bugs) berupa hasil perhitungan yang salah atau menyatu (misal angka 5 + 5 menjadi "55") karena diperlakukan sebagai teks string.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: I. REFLEKSI & J. PENILAIAN DIRI -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Refleksi 3-2-1 -->
+            <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 pb-4 border-b border-slate-100 mb-6">
+                        <span class="w-9 h-9 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center border border-pink-100 font-bold"><i class="fa-solid fa-lightbulb"></i></span>
+                        <h3 class="text-lg font-bold text-slate-900">I. Refleksi 3-2-1</h3>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600">
+                        <div>
+                            <span class="font-semibold text-pink-600 block mb-1">3 hal yang saya pahami:</span>
+                            <ul class="list-disc list-inside space-y-1 pl-2 text-xs sm:text-sm">
+                                <li>Perbedaan mendasar antara String dan Number.</li>
+                                <li>Fungsi prompt() selalu menghasilkan tipe data String.</li>
+                                <li>Penggunaan fungsi Number() untuk konversi data input.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-pink-600 block mb-1">2 hal yang masih membingungkan:</span>
+                            <ul class="list-disc list-inside space-y-1 pl-2 text-xs sm:text-sm">
+                                <li>Penanganan error jika pengguna memasukkan karakter huruf pada input angka.</li>
+                                <li>Penggunaan metode konversi lanjutan seperti parseInt vs parseFloat.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-pink-600 block mb-1">1 hal yang ingin saya coba pada program berikutnya:</span>
+                            <p class="text-xs sm:text-sm pl-2">Membuat aplikasi web interaktif sederhana dengan validasi input form menggunakan JavaScript DOM.</p>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- Penilaian Diri -->
+            <section id="penilaian" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 pb-4 border-b border-slate-100 mb-6">
+                        <span class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100 font-bold"><i class="fa-solid fa-square-check"></i></span>
+                        <h3 class="text-lg font-bold text-slate-900">J. Penilaian Diri</h3>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya dapat membedakan String dan Number.</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya memahami prompt() menghasilkan String.</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya dapat menggunakan Number().</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya dapat menggunakan String().</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya dapat menemukan kesalahan tipe data.</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-700 text-xs sm:text-sm font-medium">Saya dapat membuat program input & hitung sederhana.</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold border border-emerald-200"><i class="fa-solid fa-check mr-1"></i> Ya</span>
+               
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-slate-700">LKPD 3 JavaScript &bull; Azkia Nurul Qolbi &bull; X PPLG 2 &bull; SMKN 1 Garut</p>
+            <p>Dibuat dengan dedikasi tinggi untuk pembelajaran pemrograman perangkat lunak dan gim.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Image Preview Handler
+        function previewImage(event, previewId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById(previewId);
+                    const container = document.getElementById(previewId + '-container');
+                    imgElement.src = e.target.result;
+                    container.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Aktivitas 1 Simulator
+        function runAktivitas1() {
+            let a = "10";
+            let b = "20";
+            let result = a + b;
+            const outputEl = document.getElementById('output-akt1');
+            outputEl.classList.remove('hidden');
+            outputEl.innerHTML = `> let a = "10";<br>> let b = "20";<br>> console.log(a + b);<br><strong class="text-pink-400">Output: "${result}"</strong> (Konkatenasi String)`;
+        }
+
+        // Aktivitas 2 Simulator
+        function runAktivitas2() {
+            let nama = "Asep";
+            let umur = 16;
+            const outputEl = document.getElementById('output-akt2');
+            outputEl.classList.remove('hidden');
+            outputEl.innerHTML = `> typeof "Asep" -> <span class="text-yellow-400">${typeof nama}</span><br>> typeof 16 -> <span class="text-yellow-400">${typeof umur}</span>`;
+        }
+
+        // Aktivitas 3 Simulator
+        function runAktivitas3() {
+            let a = "10";
+            let b = "20";
+            let hasil = Number(a) + Number(b);
+            const outputEl = document.getElementById('output-akt3');
+            outputEl.classList.remove('hidden');
+            outputEl.innerHTML = `> let hasil = Number("10") + Number("20");<br><strong class="text-emerald-400">Output: ${hasil}</strong> (Aritmatika Berhasil)`;
+        }
+
+        // Kasir Simulator
+        function hitungKasir() {
+            let harga = Number(document.getElementById('input-harga').value);
+            let jumlah = Number(document.getElementById('input-jumlah').value);
+            const outputEl = document.getElementById('output-kasir');
+            outputEl.classList.remove('hidden');
+
+            if (!harga || !jumlah) {
+                outputEl.innerHTML = `<span class="text-pink-400">Silakan masukkan harga dan jumlah barang dengan benar!</span>`;
+                return;
+            }
+
+            let total = harga * jumlah;
+            outputEl.innerHTML = `> let harga = Number(${harga});<br> > let jumlah = Number(${jumlah});<br> <strong class="text-emerald-400">Total Belanja = Rp ${total.toLocaleString('id-ID')}</strong>`;
+        }
+
+        // Tantangan Nilai Simulator
+        function hitungNilai() {
+            let tugas = Number(document.getElementById('input-tugas').value);
+            let uts = Number(document.getElementById('input-uts').value);
+            let uas = Number(document.getElementById('input-uas').value);
+            const outputEl = document.getElementById('output-nilai');
+            outputEl.classList.remove('hidden');
+
+            if (isNaN(tugas) || isNaN(uts) || isNaN(uas)) {
+                outputEl.innerHTML = `<span class="text-pink-400">Mohon lengkapi semua nilai tugas, UTS, dan UAS!</span>`;
+                return;
+            }
+
+            let rerata = (tugas + uts + uas) / 3;
+            outputEl.innerHTML = `> (Tugas(${tugas}) + UTS(${uts}) + UAS(${uas})) / 3<br> <strong class="text-emerald-400">Nilai Rata-rata = ${rerata.toFixed(2)}</strong>`;
+        }
+    </script>
+</body>
+</html>
